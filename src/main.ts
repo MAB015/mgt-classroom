@@ -1,24 +1,30 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+let myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWNhY2lvbiI6MTE0NDE3ODU4NCwiY29ycmVvIjoibWFiMDE1QGhvdG1haWwuY29tIiwiaWF0IjoxNjgyNTUyMjA0LCJleHAiOjE2ODMxNTcwMDR9.jY5vQ8vJaoHjQXw8mtXLCc4r18CTwBX_XSBS0nawEno");
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
+let raw = JSON.stringify({
+  "identificacion": 1144178584,
+  "correo": "mab015@hotmail.com"
+});
+
+let requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+};
+
+fetch("https://apiestudiantes.maosystems.dev/estudiantes", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+function aa(){
+  document.body.appendChild('sss')
+}
+
+document.querySelector<HTMLTableElement>('#tableStudents')!.innerHTML = `
+
+  <h1>${aa}</h1>
+
 `
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  
